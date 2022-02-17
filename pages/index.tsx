@@ -1,8 +1,10 @@
-import type { NextPage } from "next";
+import { ReactElement } from "react";
+import type { NextPageWithLayout } from "./_app";
 import Head from "next/head";
-import { FlexBox } from "../components/flexBox";
+import { LoginLayout } from "../components/layouts/login";
+import { LoginForm } from "../components/auth";
 
-const Home: NextPage = () => {
+const Home: NextPageWithLayout = () => {
   return (
     <>
       <Head>
@@ -11,16 +13,11 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <FlexBox
-        element="main"
-        height="100%"
-        alignItems="center"
-        justifyContent="center"
-      >
-        <span>lalalala</span>
-      </FlexBox>
+      <LoginForm />
     </>
   );
 };
+
+Home.getLayout = (page: ReactElement) => <LoginLayout>{page}</LoginLayout>;
 
 export default Home;

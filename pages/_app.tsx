@@ -13,10 +13,10 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background-color: ${() => theme.colors.bg3};
+    background-color: ${() => theme.colors.bg1};
     color: ${() => theme.colors.text};
     font-family: ${() => theme.fonts.primary};
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     height: 100vh;
     margin: 0;
   }
@@ -30,7 +30,7 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-type NextPageWithLayout = NextPage & {
+export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
 };
 
