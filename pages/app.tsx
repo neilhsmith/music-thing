@@ -11,7 +11,14 @@ const App: NextPage = () => {
     return <p>Loading...</p>;
   }
 
-  return <p>Signed in as {session?.user?.email}</p>;
+  return (
+    <>
+      <p>Signed in as {session?.user?.email}</p>
+      <p>
+        <a href="/api/auth/signout">Sign Out</a>
+      </p>
+    </>
+  );
 };
 
 export default App;
