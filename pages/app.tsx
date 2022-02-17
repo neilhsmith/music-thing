@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import Link from "next/link";
 import { useSession } from "next-auth/react";
 import AccessDenied from "../components/accessDenied";
 
@@ -15,7 +16,7 @@ const App: NextPage = () => {
     <>
       <p>Signed in as {session?.user?.email}</p>
       <p>
-        <a href="/api/auth/signout">Sign Out</a>
+        <Link href="/api/auth/signout">Sign Out</Link>
       </p>
     </>
   );
