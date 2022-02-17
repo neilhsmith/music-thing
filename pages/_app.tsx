@@ -1,9 +1,29 @@
-import "../styles/globals.css";
 import type { ReactElement, ReactNode } from "react";
 import type { NextPage } from "next";
 import type { AppProps } from "next/app";
 import { SessionProvider } from "next-auth/react";
 import { Session } from "next-auth";
+import { createGlobalStyle, ThemeProvider } from "styled-components";
+import { darkTheme as theme } from "../themes";
+
+const GlobalStyle = createGlobalStyle`
+  html {
+    font-size: 62.5%;
+    height: 100vh;
+  }
+
+  body {
+    background-color: ${() => theme.colors.bg3};
+    color: ${() => theme.colors.text};
+    font-size: 1.6rem;
+    height: 100vh;
+    margin: 0;
+  }
+
+  #__next {
+    height: 100vh;
+  }
+`;
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -22,8 +42,13 @@ export default function MyApp({
   const getLayout = Component.getLayout ?? ((page) => page);
 
   return getLayout(
-    <SessionProvider session={session}>
-      <Component {...pageProps} />
-    </SessionProvider>
+    <>
+      <GlobalStyle />
+      <ThemeProvider theme={theme}>
+        <SessionProvider session={session}>
+          <Component {...pageProps} />
+        </SessionProvider>
+      </ThemeProvider>
+    </>
   );
 }
