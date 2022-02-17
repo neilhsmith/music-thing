@@ -10,7 +10,10 @@ export const LoginLayout = ({ children }: { children: ReactNode }) => {
       alignItems="center"
       justifyContent="center"
     >
-      <Container>{children}</Container>
+      <Container>
+        <img src="/logo.svg" alt="MusicThing logo" />
+        {children}
+      </Container>
     </FlexBox>
   );
 };

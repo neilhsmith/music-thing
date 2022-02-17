@@ -4,19 +4,26 @@ import styled from "styled-components";
 export const LoginForm = () => {
   return (
     <Wrapper>
-      <Header>
-        <img src="/logo.svg" alt="MusicThing logo" />
-      </Header>
-      <Body>
+      <Section>
+        <form>
+          <label htmlFor="email">Email</label>
+          <input id="email" type="email" placeholder="Email" />
+          <label htmlFor="password">Email</label>
+          <input id="password" type="password" placeholder="Password" />
+          <button type="submit">Login</button>
+        </form>
+      </Section>
+      <Divider>or</Divider>
+      <Section>
         <button onClick={() => signIn("google", { callbackUrl: "/app" })}>
           Sign in with Google
         </button>
-      </Body>
+      </Section>
     </Wrapper>
   );
 };
 
-const Wrapper = styled.section`
+const Wrapper = styled.div`
   padding: 5rem;
   background-color: ${(props) => props.theme.colors.bg2};
   border-radius: 12px;
@@ -26,8 +33,39 @@ const Wrapper = styled.section`
   }
 `;
 
-const Header = styled.header`
-  margin-bottom: 6rem;
+const Section = styled.div`
+  margin: 6rem 0;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+  &:last-of-type {
+    margin-bottom: 0;
+  }
 `;
 
-const Body = styled.div``;
+const Divider = styled.span`
+  position: relative;
+  display: block;
+  text-align: center;
+  margin-bottom: 2rem;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    margin-top: 1px;
+    height: 1px;
+    width: 40%;
+    background: ${(props) => props.theme.colors.text};
+  }
+
+  &::before {
+    left: 0;
+  }
+
+  &::after {
+    right: 0;
+  }
+`;

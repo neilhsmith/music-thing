@@ -60,8 +60,9 @@ const defaultProps: FlexBoxProps = {
   display: "flex",
 };
 
-export const FlexBox = styled(({ children, element, ...props }: FlexBoxProps) =>
-  createElement(element || "div", props, children)
+export const FlexBox = styled(
+  ({ children, element, ...otherProps }: FlexBoxProps) =>
+    createElement(element || "div", otherProps, children)
 )`
   ${(props) => cssFromProp(props.alignContent, "align-content")}
   ${(props) => cssFromProp(props.alignItems, "align-items")}
