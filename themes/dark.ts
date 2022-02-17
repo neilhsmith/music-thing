@@ -14,4 +14,12 @@ export const darkTheme = {
     text3: "#F6F6F6",
     textActive: "#FFFFFF",
   },
+  fonts: {
+    primary: "'Poppins', sans-serif",
+  },
+  weights: {
+    light: 300,
+    primary: 400,
+    bold: 700,
+  },
 };

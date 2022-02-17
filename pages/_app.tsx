@@ -9,19 +9,20 @@ import { darkTheme as theme } from "../themes";
 const GlobalStyle = createGlobalStyle`
   html {
     font-size: 62.5%;
-    height: 100vh;
+    height: 100%;
   }
 
   body {
     background-color: ${() => theme.colors.bg3};
     color: ${() => theme.colors.text};
+    font-family: ${() => theme.fonts.primary};
     font-size: 1.6rem;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
   }
 
   #__next {
-    height: 100vh;
+    height: 100%;
   }
 `;
 
