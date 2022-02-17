@@ -17,8 +17,12 @@ const GlobalStyle = createGlobalStyle`
     color: ${() => theme.colors.text};
     font-family: ${() => theme.fonts.primary};
     font-size: 1.6rem;
-    min-height: 100vh;
+    height: 100vh;
     margin: 0;
+  }
+
+  *, *::before, &::after {
+    box-sizing: border-box;
   }
 
   #__next {
