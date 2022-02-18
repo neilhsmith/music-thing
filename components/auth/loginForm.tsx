@@ -1,5 +1,6 @@
 import { signIn } from "next-auth/react";
 import styled from "styled-components";
+import { Button } from "../button";
 
 export const LoginForm = () => {
   return (
@@ -15,9 +16,12 @@ export const LoginForm = () => {
       </Section>
       <Divider>or</Divider>
       <Section>
-        <button onClick={() => signIn("google", { callbackUrl: "/app" })}>
+        <Button
+          type="danger"
+          onClick={() => signIn("google", { callbackUrl: "/app" })}
+        >
           Sign in with Google
-        </button>
+        </Button>
       </Section>
     </Wrapper>
   );

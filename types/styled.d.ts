@@ -3,29 +3,45 @@ import "styled-components";
 declare module "styled-components" {
   export interface DefaultTheme {
     colors: {
-      primary: "#46D9AD";
-      danger: "#DC3545";
-      warning: "#EB9C53";
-      bg1: "#12181B";
-      bg2: "#141B1E";
-      bg3: "#191F22";
-      bg4: "#252B2E";
-      bg5: "#252B2E";
-      bgActive: "#374348";
-      text: "#C4C4C4";
-      text2: "#141B1E";
-      text3: "#F6F6F6";
-      textActive: "#FFFFFF";
+      primary: string;
+      danger: string;
+      warning: string;
+      bg1: string;
+      bg2: string;
+      bg3: string;
+      bg4: string;
+      bg5: string;
+      bgActive: string;
+      text: string;
+      text2: string;
+      text3: string;
+      textActive: string;
+    };
+
+    buttons: {
+      bgs: {
+        primary: string;
+        secondary: string;
+        danger: string;
+        warning: string;
+      };
+      fgs: {
+        primary: string;
+        secondary: string;
+        danger: string;
+        warning: string;
+      };
     };
 
     fonts: {
-      primary: "'Poppins', sans-serif";
+      primary: string;
     };
 
     weights: {
-      light: 300;
-      primary: 400;
-      bold: 700;
+      light: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
+      primary: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
+      accent: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
+      bold: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
     };
   }
 }

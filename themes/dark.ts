@@ -9,12 +9,26 @@ export const darkTheme: DefaultTheme = {
     bg2: "#141B1E",
     bg3: "#191F22",
     bg4: "#252B2E",
-    bg5: "#252B2E",
+    bg5: "#E5E5E5",
     bgActive: "#374348",
     text: "#C4C4C4",
     text2: "#141B1E",
     text3: "#F6F6F6",
     textActive: "#FFFFFF",
+  },
+  buttons: {
+    bgs: {
+      primary: "#46D9AD",
+      secondary: "#E5E5E5",
+      danger: "#DC3545",
+      warning: "#EB9C53",
+    },
+    fgs: {
+      primary: "#FFFFFF",
+      secondary: "#F6F6F6",
+      danger: "#FFFFFF",
+      warning: "#FFFFFF",
+    },
   },
   fonts: {
     primary: "'Poppins', sans-serif",
@@ -22,6 +36,7 @@ export const darkTheme: DefaultTheme = {
   weights: {
     light: 300,
     primary: 400,
+    accent: 500,
     bold: 700,
   },
 };
