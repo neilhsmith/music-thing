@@ -25,7 +25,7 @@ export const darkTheme: DefaultTheme = {
     },
     fgs: {
       primary: "#FFFFFF",
-      secondary: "#F6F6F6",
+      secondary: "#141B1E",
       danger: "#FFFFFF",
       warning: "#FFFFFF",
     },

@@ -14,6 +14,7 @@ export const Button = styled(({ children, ...otherProps }: ButtonProps) =>
   width: 100%;
   padding: 1rem 2rem;
   cursor: pointer;
+  border-radius: 8px;
   font-size: 2rem;
   font-weight: ${(props) => props.theme.weights.accent};
   color: ${(props) => props.theme.buttons.fgs[props.type!]};

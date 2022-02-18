@@ -16,10 +16,7 @@ export const LoginForm = () => {
       </Section>
       <Divider>or</Divider>
       <Section>
-        <Button
-          type="danger"
-          onClick={() => signIn("google", { callbackUrl: "/app" })}
-        >
+        <Button onClick={() => signIn("google", { callbackUrl: "/app" })}>
           Sign in with Google
         </Button>
       </Section>
