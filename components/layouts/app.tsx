@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FlexBox } from "../flexBox";
+import { AppNav } from "../appNav";
 import { Button } from "../button";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
@@ -20,7 +21,9 @@ export const AppLayout = ({ children }: { children: ReactNode }) => {
             />
           </Logo>
         </TopBar>
-        <NavWrapper>main navigation</NavWrapper>
+        <NavWrapper>
+          <AppNav />
+        </NavWrapper>
         <PlaylistsWrapper>
           <FlexBox justifyContent="space-between" alignItems="center">
             <h1>Playlists</h1>
@@ -48,10 +51,10 @@ const Sidebar = styled(FlexBox)`
   background-color: ${(props) => props.theme.colors.bg1};
 `;
 const NavWrapper = styled.section`
-  margin: 3rem 3.8rem 7rem 3.8rem;
+  margin: 1rem 3.8rem;
 `;
 const PlaylistsWrapper = styled.section`
-  margin: 3rem 4px 2rem 3.8rem;
+  margin: 0 8px 2rem 3.8rem;
 `;
 
 const TopBar = styled.div`
