@@ -22,12 +22,14 @@ export const darkTheme: DefaultTheme = {
       secondary: "#E5E5E5",
       danger: "#DC3545",
       warning: "#EB9C53",
+      transparent: "transparent",
     },
     fgs: {
       primary: "#FFFFFF",
       secondary: "#141B1E",
       danger: "#FFFFFF",
       warning: "#FFFFFF",
+      transparent: "#FFFFFF",
     },
   },
   fonts: {

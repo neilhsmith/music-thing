@@ -24,12 +24,14 @@ declare module "styled-components" {
         secondary: string;
         danger: string;
         warning: string;
+        transparent: string;
       };
       fgs: {
         primary: string;
         secondary: string;
         danger: string;
         warning: string;
+        transparent: string;
       };
     };
 
