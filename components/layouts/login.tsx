@@ -11,7 +11,7 @@ export const LoginLayout = ({ children }: { children: ReactNode }) => {
       justifyContent="center"
     >
       <Container>
-        <img src="/logo.svg" alt="MusicThing logo" />
+        <Logo src="/logo.svg" alt="MusicThing logo" />
         {children}
       </Container>
     </FlexBox>
@@ -25,4 +25,10 @@ const Container = styled.div`
   @media (max-width: 480px) {
     margin: 0 4%;
   }
+`;
+
+const Logo = styled.img`
+  display: block;
+  max-width: 80%;
+  margin: 0 auto;
 `;

@@ -1,23 +1,62 @@
 import { signIn } from "next-auth/react";
 import styled from "styled-components";
+import { Formik, Form } from "formik";
+import { FieldGroup, Label, Field, ErrorMessage } from "../form";
 import { Button } from "../button";
 
 export const LoginForm = () => {
   return (
     <Wrapper>
       <Section>
-        <form>
-          <label htmlFor="email">Email</label>
-          <input id="email" type="email" placeholder="Email" />
-          <label htmlFor="password">Email</label>
-          <input id="password" type="password" placeholder="Password" />
-          <button type="submit">Login</button>
-        </form>
+        <Formik
+          initialValues={{ email: "", password: "" }}
+          validate={(values) => {
+            const errors: any = {};
+
+            if (!values.email) {
+              errors.email = "Required";
+            } else if (
+              !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+            ) {
+              errors.email = "Invalid email address";
+            }
+            if (!values.password) {
+              errors.password = "Required";
+            }
+
+            return errors;
+          }}
+          onSubmit={(values, { setSubmitting }) => {
+            setTimeout(() => {
+              alert(JSON.stringify(values, null, 2));
+
+              setSubmitting(false);
+            }, 400);
+          }}
+        >
+          {({ isSubmitting }) => (
+            <Form>
+              <FieldGroup>
+                <Label htmlFor="email">Email</Label>
+                <Field disabled type="email" name="email" />
+                <ErrorMessage name="email" component="div" />
+              </FieldGroup>
+              <FieldGroup>
+                <Label htmlFor="password">Password</Label>
+                <Field disabled type="password" name="password" />
+                <ErrorMessage name="password" component="div" />
+              </FieldGroup>
+              <Button color="primary" type="submit" disabled={true}>
+                Sign In
+              </Button>
+            </Form>
+          )}
+        </Formik>
       </Section>
       <Divider>or</Divider>
       <Section>
         <Button onClick={() => signIn("google", { callbackUrl: "/app" })}>
-          Sign in with Google
+          Sign In with Google
         </Button>
       </Section>
     </Wrapper>
