@@ -9,9 +9,28 @@ import {
   faBan,
 } from "@fortawesome/free-solid-svg-icons";
 
-type ActiveItemProps = {
-  active: boolean;
-};
+const navItems = [
+  {
+    href: "/app",
+    icon: faMusic,
+    title: "Library",
+  },
+  {
+    href: "/search",
+    icon: faMagnifyingGlass,
+    title: "Search",
+  },
+  {
+    href: "/explore",
+    icon: faCompass,
+    title: "Explore",
+  },
+  {
+    href: "/blocked",
+    icon: faBan,
+    title: "Blocked",
+  },
+];
 
 export const AppNav = () => {
   const { pathname } = useRouter();
@@ -19,34 +38,16 @@ export const AppNav = () => {
   return (
     <nav>
       <List>
-        <Item active={pathname === "/app"}>
-          <Link href="/app" passHref={true}>
-            <StyledLink>
-              <Icon icon={faMusic} /> <Text>Library</Text>
-            </StyledLink>
-          </Link>
-        </Item>
-        <Item active={pathname === "/search"}>
-          <Link href="/search" passHref={true}>
-            <StyledLink>
-              <Icon icon={faMagnifyingGlass} /> <Text>Search</Text>
-            </StyledLink>
-          </Link>
-        </Item>
-        <Item active={pathname === "/explore"}>
-          <Link href="/explore" passHref={true}>
-            <StyledLink>
-              <Icon icon={faCompass} /> <Text>Explore</Text>
-            </StyledLink>
-          </Link>
-        </Item>
-        <Item active={pathname === "/blocked"}>
-          <Link href="/blocked" passHref={true}>
-            <StyledLink>
-              <Icon icon={faBan} /> <Text>Blocked</Text>
-            </StyledLink>
-          </Link>
-        </Item>
+        {navItems &&
+          navItems.map((item) => (
+            <Item key={item.href} active={pathname === item.href}>
+              <Link href={item.href} passHref>
+                <StyledLink>
+                  <Icon icon={item.icon} /> <Text>{item.title}</Text>
+                </StyledLink>
+              </Link>
+            </Item>
+          ))}
       </List>
     </nav>
   );
@@ -57,7 +58,7 @@ const List = styled.ul`
   padding: 0;
 `;
 
-const Item = styled.li<ActiveItemProps>`
+const Item = styled.li<{ active: boolean }>`
   padding: 0.8rem;
   padding-left: 26%;
   margin-bottom: 0.4rem;
