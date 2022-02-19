@@ -23,6 +23,7 @@ const GlobalStyle = createGlobalStyle`
     background-color: ${() => theme.colors.bg1};
     color: ${() => theme.colors.text};
     font-family: ${() => theme.fonts.primary};
+    font-weight: ${() => theme.weights.primary};
     font-size: 1.8rem;
     height: 100vh;
     margin: 0;

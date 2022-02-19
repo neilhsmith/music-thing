@@ -37,7 +37,7 @@ export const darkTheme: DefaultTheme = {
   },
   weights: {
     light: 300,
-    primary: 400,
+    primary: 300,
     accent: 500,
     bold: 700,
   },
