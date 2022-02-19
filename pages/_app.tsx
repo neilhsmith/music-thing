@@ -4,9 +4,12 @@ import type { AppProps } from "next/app";
 import { SessionProvider } from "next-auth/react";
 import { Session } from "next-auth";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
+import { normalize } from "polished";
 import { darkTheme as theme } from "../themes";
 
 const GlobalStyle = createGlobalStyle`
+  ${normalize()}
+
   html {
     font-size: 62.5%;
     height: 100%;
