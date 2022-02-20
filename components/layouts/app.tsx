@@ -1,11 +1,13 @@
 import { ReactNode } from "react";
-import styled from "styled-components";
 import Image from "next/image";
+import Link from "next/link";
+import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus, faCog, faSignOut } from "@fortawesome/free-solid-svg-icons";
 import { FlexBox } from "../flexBox";
 import { AppNav } from "../appNav";
 import { Button } from "../button";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import Dropdown from "../dropdown";
 
 export const AppLayout = ({ children }: { children: ReactNode }) => {
   return (
@@ -35,7 +37,34 @@ export const AppLayout = ({ children }: { children: ReactNode }) => {
       </Sidebar>
       <Main>
         <TopBar>
-          <HeaderPanel>nav / search / user</HeaderPanel>
+          <HeaderPanel>
+            <div>nav / search</div>
+            <AlignRight>
+              <Dropdown
+                toggle={
+                  <Button inline color="transparent" size="xs">
+                    <FontAwesomeIcon icon={faCog} size="lg" />
+                  </Button>
+                }
+                items={[
+                  <Dropdown.Item>
+                    <Link href="/settings" passHref>
+                      <StyledLink>
+                        <FontAwesomeIcon icon={faCog} size="sm" /> Settings
+                      </StyledLink>
+                    </Link>
+                  </Dropdown.Item>,
+                  <Dropdown.Item>
+                    <Link href="/logout" passHref>
+                      <StyledLink>
+                        <FontAwesomeIcon icon={faSignOut} size="sm" /> Log Out
+                      </StyledLink>
+                    </Link>
+                  </Dropdown.Item>,
+                ]}
+              />
+            </AlignRight>
+          </HeaderPanel>
         </TopBar>
         <AppPanel>{children}</AppPanel>
       </Main>
@@ -63,11 +92,15 @@ const TopBar = styled.div`
 `;
 const HeaderPanel = styled(FlexBox)`
   flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
   height: 100%;
   padding: 0 2rem;
   background-color: ${(props) => props.theme.colors.bg2};
   border-bottom: 3px solid ${(props) => props.theme.colors.bg4};
+`;
+const AlignRight = styled.div`
+  margin-left: auto;
 `;
 
 const Logo = styled.div`
@@ -88,4 +121,8 @@ const AppPanel = styled(FlexBox)`
   height: 100%;
   padding: 1rem 3rem;
   background-color: ${(props) => props.theme.colors.bg3};
+`;
+const StyledLink = styled.a`
+  color: inherit;
+  text-decoration: none;
 `;
