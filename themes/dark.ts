@@ -38,7 +38,7 @@ export const darkTheme: DefaultTheme = {
   weights: {
     light: 300,
     primary: 300,
-    accent: 500,
+    accent: 400,
     bold: 700,
   },
 };
