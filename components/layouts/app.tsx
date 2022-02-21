@@ -119,7 +119,7 @@ const AppPanel = styled(FlexBox)`
   flex-direction: column;
   width: 100%;
   height: 100%;
-  padding: 1rem 3rem;
+  padding: 3rem 3rem;
   background-color: ${(props) => props.theme.colors.bg3};
 `;
 const StyledLink = styled.a`

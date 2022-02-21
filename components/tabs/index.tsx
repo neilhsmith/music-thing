@@ -1,3 +1,3 @@
+export type { OrientationProps, TabItemProps } from "./tabs.types";
+
 export { Tabs } from "./tabs";
-export { Tab } from "./tab";
-export { TabPanel } from "./tabPanel";
