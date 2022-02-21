@@ -1,14 +1,14 @@
 import {
   useState,
-  useEffect,
   useRef,
   forwardRef,
   ReactNode,
-  MutableRefObject,
   RefObject,
   ForwardedRef,
+  useEffect,
 } from "react";
 import styled from "styled-components";
+import { useClickOutside } from "../../utils/useClickOutside";
 
 type DropdownProps = {
   toggle: ReactNode;
@@ -28,21 +28,30 @@ type MenuProps = {
 
 type ItemProps = {
   children: ReactNode;
+  onClick: EventListener;
 };
 
 type DividerProps = {};
 
 const Dropdown = ({ toggle, items }: DropdownProps) => {
-  const menuRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
-  // todo: listen for clicks outside menuRef when visible is true, setVisible(false)
+  const toggleVisibility = () => setVisible(!visible);
+  const setVisibilityOff = () => setVisible(false);
+
+  const menuRef = useRef<HTMLDivElement>(null);
+  useClickOutside(menuRef, setVisibilityOff, [visible]);
 
   return (
     <DropdownWrapper>
-      <Toggle onClick={() => setVisible(!visible)}>{toggle}</Toggle>
+      <Toggle onClick={toggleVisibility}>{toggle}</Toggle>
       <Menu ref={menuRef} visible={visible}>
-        {items && items.map((item, i) => <Item key={i}>{item}</Item>)}
+        {items &&
+          items.map((item, i) => (
+            <Item key={i} onClick={setVisibilityOff}>
+              {item}
+            </Item>
+          ))}
       </Menu>
     </DropdownWrapper>
   );
@@ -62,8 +71,8 @@ const Menu = forwardRef(
   }
 );
 
-const Item = ({ children }: ItemProps) => {
-  return <ItemWrapper>{children}</ItemWrapper>;
+const Item = ({ children, onClick }: ItemProps) => {
+  return <ItemWrapper onClick={onClick}>{children}</ItemWrapper>;
 };
 
 const Divider = () => {
@@ -94,7 +103,7 @@ const MenuWrapper = styled.div<{ visible: boolean; ref: any }>`
   background-color: ${(props) => props.theme.colors.bg4};
 `;
 
-const ItemWrapper = styled.div`
+const ItemWrapper = styled.div<{ onClick: any }>`
   margin-bottom: 1.8rem;
   padding: 0 1rem;
   font-weight: ${(props) => props.theme.weights.accent};
