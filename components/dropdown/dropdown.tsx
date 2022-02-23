@@ -28,7 +28,7 @@ type MenuProps = {
 
 type ItemProps = {
   children: ReactNode;
-  onClick: EventListener;
+  onClick?: EventListener;
 };
 
 type DividerProps = {};
@@ -61,15 +61,16 @@ const Toggle = ({ children, onClick }: ToggleProps) => {
   return <ToggleWrapper onClick={onClick}>{children}</ToggleWrapper>;
 };
 
-const Menu = forwardRef(
-  ({ children, visible }: MenuProps, ref: ForwardedRef<HTMLDivElement>) => {
-    return (
-      <MenuWrapper ref={ref} visible={visible}>
-        {children}
-      </MenuWrapper>
-    );
-  }
-);
+const Menu = forwardRef(function menuComponent(
+  { children, visible }: MenuProps,
+  ref: ForwardedRef<HTMLDivElement>
+) {
+  return (
+    <MenuWrapper ref={ref} visible={visible}>
+      {children}
+    </MenuWrapper>
+  );
+});
 
 const Item = ({ children, onClick }: ItemProps) => {
   return <ItemWrapper onClick={onClick}>{children}</ItemWrapper>;

@@ -47,14 +47,14 @@ export const AppLayout = ({ children }: { children: ReactNode }) => {
                   </Button>
                 }
                 items={[
-                  <Dropdown.Item>
+                  <Dropdown.Item key="0">
                     <Link href="/settings" passHref>
                       <StyledLink>
                         <FontAwesomeIcon icon={faCog} size="sm" /> Settings
                       </StyledLink>
                     </Link>
                   </Dropdown.Item>,
-                  <Dropdown.Item>
+                  <Dropdown.Item key="1">
                     <Link href="/logout" passHref>
                       <StyledLink>
                         <FontAwesomeIcon icon={faSignOut} size="sm" /> Log Out
